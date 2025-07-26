@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ศูนย์ไทยใส่ใจสิ่งแวดล้อม - งานสมาชิกครั้งที่ 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Kanit', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .green-gradient {
+            background: linear-gradient(135deg, #4ade80 0%, #22c55e 50%, #16a34a 100%);
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        .pulse-slow {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .slide-in {
+            animation: slideIn 1s ease-out;
+        }
+        
+        .bounce-slow {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .theme-toggle {
+            transition: all 0.3s ease;
+        }
+        
+        .dark {
+            background-color: #1a202c;
+            color: white;
+        }
+        
+        .dark .bg-white {
+            background-color: #2d3748;
+        }
+        
+        .dark .text-gray-800 {
+            color: #e2e8f0;
+        }
+        
+        .dark .text-gray-600 {
+            color: #a0aec0;
+        }
+        
+        .sparkle {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sparkle::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: sparkle 2s infinite;
+        }
+        
+        @keyframes sparkle {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+    </style>
+</head>
+<body class="min-h-screen transition-all duration-500" id="body">
+    <!-- Theme Toggle Button -->
+    <button onclick="toggleTheme()" class="fixed top-4 right-4 z-50 bg-yellow-400 hover:bg-yellow-500 text-gray-800 p-3 rounded-full shadow-lg theme-toggle">
+        <i class="fas fa-sun" id="theme-icon"></i>
+    </button>
+
+    <!-- Main Container -->
+    <div class="gradient-bg min-h-screen py-8 px-4">
+        <!-- Header -->
+        <div class="max-w-4xl mx-auto text-center mb-8 slide-in">
+            <div class="floating">
+                <i class="fas fa-leaf text-6xl text-green-300 mb-4"></i>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 sparkle">
+                📢 เปิดรับสมัครแล้ว!
+            </h1>
+            <div class="bg-white bg-opacity-20 backdrop-blur-lg rounded-xl p-6 mb-6">
+                <h2 class="text-2xl md:text-3xl font-semibold text-white mb-2">
+                    กิจกรรมสมาชิกศูนย์ไทยใส่ใจสิ่งแวดล้อม
+                </h2>
+                <p class="text-xl text-green-100 font-medium">ครั้งที่ 2</p>
+            </div>
+        </div>
+
+        <!-- Event Details Cards -->
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Date Card -->
+            <div class="bg-white bg-opacity-95 rounded-2xl p-6 card-hover slide-in">
+                <div class="text-center">
+                    <div class="bg-red-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 bounce-slow">
+                        <i class="fas fa-calendar-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">วันที่จัดงาน</h3>
+                    <p class="text-lg text-red-600 font-medium">วันเสาร์ที่ 2 สิงหาคม 2568</p>
+                </div>
+            </div>
+
+            <!-- Location Card -->
+            <div class="bg-white bg-opacity-95 rounded-2xl p-6 card-hover slide-in" style="animation-delay: 0.2s">
+                <div class="text-center">
+                    <div class="bg-blue-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 pulse-slow">
+                        <i class="fas fa-map-marker-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">สถานที่</h3>
+                    <p class="text-sm text-gray-600">ศูนย์ศึกษาธรรมชาติกองทัพบกบางปู</p>
+                    <p class="text-sm text-blue-600 font-medium">จ.สมุทรปราการ</p>
+                </div>
+            </div>
+
+            <!-- Registration Card -->
+            <div class="bg-white bg-opacity-95 rounded-2xl p-6 card-hover slide-in md:col-span-2 lg:col-span-1" style="animation-delay: 0.4s">
+                <div class="text-center">
+                    <div class="bg-green-500 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 floating">
+                        <i class="fas fa-user-plus text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">การสมัคร</h3>
+                    <p class="text-sm text-gray-600 mb-2">สแกน QR Code ด้านล่าง</p>
+                    <p class="text-xs text-orange-600 font-medium">🙉 ต้องสมัครเป็นสมาชิก CSTD Smart Member ก่อน!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- QR Code Section -->
+        <div class="max-w-md mx-auto bg-white bg-opacity-95 rounded-2xl p-8 text-center card-hover slide-in" style="animation-delay: 0.6s">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">สแกนที่นี้ 👇</h3>
+            <div class="bg-gray-100 w-48 h-48 mx-auto rounded-xl flex items-center justify-center mb-4 relative overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-br from-green-400 to-blue-500 opacity-20"></div>
+                <div class="relative z-10">
+                    <i class="fas fa-qrcode text-6xl text-gray-600"></i>
+                    <p class="text-sm text-gray-500 mt-2">QR Code จะแสดงที่นี่</p>
+                </div>
+            </div>
+            <button onclick="showAlert()" class="green-gradient text-white px-8 py-3 rounded-full font-semibold hover:shadow-lg transform hover:scale-105 transition-all duration-300 sparkle">
+                <i class="fas fa-hand-point-up mr-2"></i>
+                คลิกเพื่อสมัคร
+            </button>
+        </div>
+
+        <!-- Environmental Theme Section -->
+        <div class="max-w-4xl mx-auto mt-12 bg-white bg-opacity-90 rounded-2xl p-8 slide-in" style="animation-delay: 0.8s">
+            <div class="text-center mb-6">
+                <h3 class="text-3xl font-bold text-gray-800 mb-4">
+                    <i class="fas fa-seedling text-green-500 mr-2"></i>
+                    ร่วมรักษาสิ่งแวดล้อม
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center p-4 hover:bg-green-50 rounded-xl transition-all duration-300">
+                        <i class="fas fa-recycle text-3xl text-green-500 mb-2 floating"></i>
+                        <p class="text-sm font-medium text-gray-700">รีไซเคิล</p>
+                    </div>
+                    <div class="text-center p-4 hover:bg-blue-50 rounded-xl transition-all duration-300">
+                        <i class="fas fa-water text-3xl text-blue-500 mb-2 bounce-slow"></i>
+                        <p class="text-sm font-medium text-gray-700">อนุรักษ์น้ำ</p>
+                    </div>
+                    <div class="text-center p-4 hover:bg-yellow-50 rounded-xl transition-all duration-300">
+                        <i class="fas fa-solar-panel text-3xl text-yellow-500 mb-2 pulse-slow"></i>
+                        <p class="text-sm font-medium text-gray-700">พลังงานสะอาด</p>
+                    </div>
+                    <div class="text-center p-4 hover:bg-green-50 rounded-xl transition-all duration-300">
+                        <i class="fas fa-tree text-3xl text-green-600 mb-2 floating"></i>
+                        <p class="text-sm font-medium text-gray-700">ปลูกป่า</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="max-w-4xl mx-auto text-center mt-8 text-white">
+            <p class="text-lg mb-2">🌱 มาร่วมกันสร้างโลกใบเขียว 🌱</p>
+            <p class="text-sm opacity-75">ศูนย์ไทยใส่ใจสิ่งแวดล้อม | CSTD Smart Member</p>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle Function
+        function toggleTheme() {
+            const body = document.getElementById('body');
+            const themeIcon = document.getElementById('theme-icon');
+            
+            body.classList.toggle('dark');
+            
+            if (body.classList.contains('dark')) {
+                themeIcon.className = 'fas fa-moon';
+                body.style.background = 'linear-gradient(135deg, #2d3748 0%, #4a5568 100%)';
+            } else {
+                themeIcon.className = 'fas fa-sun';
+                body.style.background = '';
+                body.className = body.className.replace('dark', '');
+            }
+        }
+
+        // Alert Function for Registration
+        function showAlert() {
+            alert('🎉 ขอบคุณสำหรับความสนใจ! \nกรุณาสแกน QR Code เพื่อดำเนินการสมัครสมาชิก CSTD Smart Member \n\n📱 อย่าลืมสมัครเป็นสมาชิกก่อนลงทะเบียนเข้าร่วมกิจกรรมนะครับ');
+        }
+
+        // Scroll Animation
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.slide-in');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate-fade-in');
+                }
+            });
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Initialize animations on load
+        window.addEventListener('load', () => {
+            animateOnScroll();
+            
+            // Add some interactive sparkle effects
+            setInterval(() => {
+                const sparkles = document.querySelectorAll('.sparkle');
+                sparkles.forEach(sparkle => {
+                    sparkle.style.animation = 'none';
+                    setTimeout(() => {
+                        sparkle.style.animation = '';
+                    }, 10);
+                });
+            }, 3000);
+        });
+
+        // Mobile responsive touch effects
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.card-hover').forEach(card => {
+                card.addEventListener('touchstart', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                card.addEventListener('touchend', function() {
+                    this.style.transform = '';
+                });
+            });
+        }
+    </script>
+</body>
+</html>
